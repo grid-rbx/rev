@@ -92,10 +92,24 @@ async function fromBloxlink(id) {
   }
 }
 
-function checkForCode(id, code) {}
+function checkForCode(id, code) {
+  return fetch(`https://roblox.com/users/${id}/profile`).then((r) => {
+    $ = cheerio.load(r.body);
+    const blurb = $("meta[name=description]").attr("content");
+
+    if (blurb.indexOf(code) != -1) {
+      console.log("Found code");
+    } else {
+      console.log("Code not found");
+    }
+  });
+}
 
 const rev = {
   checkDiscordId,
+  fromRover,
+  fromBloxlink,
+  checkForCode,
 };
 
 module.exports = rev;
