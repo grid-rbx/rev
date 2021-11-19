@@ -1,21 +1,10 @@
 const fetch = require("node-fetch");
 
-const config = {
-  userNotFound: {
-    status: "error",
-    errorCode: 404,
-    error: "User not found.",
-  },
-  noDiscordId: {
-    status: "error",
-    errorCode: 400,
-    error: "No Discord ID provided.",
-  },
-};
+const config = require("./config")
 
 function checkDiscordId(id) {
   if (!id) {
-    return console.log(config.noDiscordId);
+    throw new Error("No Discord ID Provided");
   }
 
   id = id.toString();
@@ -23,15 +12,8 @@ function checkDiscordId(id) {
   const bloxlink = fromBloxlink(id);
   const rover = fromRover(id);
 
-  if (bloxlink.status === "http-error" || rover.status === "http-error") {
-    return console.log(bloxlink.error);
-  }
-
   if (bloxlink.status === "error" && rover.status === "error") {
-    return console.log({
-      bloxlink,
-      rover,
-    });
+    return false
   } else if (bloxlink.status === "error") {
     return console.log(bloxlink);
   } else if (rover.status === "error") {
@@ -105,7 +87,9 @@ function checkForCode(id, code) {
   });
 }
 
-const rev = {
+checkDiscordId("848287488281")
+
+ const rev = {
   checkDiscordId,
   fromRover,
   fromBloxlink,
