@@ -1,8 +1,20 @@
 {
-  "name": "my-node-app",
+  "name": "rev",
   "version": "1.0.0",
-  "type": "module",
+  "description": "Roblox account linking, made easy.",
+  "main": "index.js",
   "dependencies": {
-    "node-fetch": "^3.1.0"
-  }
+    "node-fetch": "^2.6.6"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/grid-rbx/rev.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/grid-rbx/rev/issues"
+  },
+  "homepage": "https://github.com/grid-rbx/rev#readme"
 }
