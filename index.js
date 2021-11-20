@@ -15,18 +15,20 @@ function checkDiscordId(id) {
 
   id = id.toString();
 
-  const bloxlink = fromBloxlink(id);
-  const rover = fromRover(id);
+  try {
+    const bloxlink = checkBloxlink(id);
+    const rover = checkRover(id);
 
-  if (bloxlink.status === false && rover.status === false) {
-    return false;
-  } else if (bloxlink.status === "ok") {
-    return bloxlink;
-  } else if (bloxlink.status === false && rover.status === "ok") {
-    return rover;
+    if (bloxlink === false && rover === false) {
+      return false;
+    } else if (bloxlink.status === "ok") {
+      return bloxlink;
+    } else if (bloxlink === false && rover.status === "ok") {
+      return rover;
+    }
+  } catch (error) {
+    throw new Error(error);
   }
-
-  return id;
 }
 
 /**
@@ -35,7 +37,7 @@ function checkDiscordId(id) {
  * @returns {object|boolean} Returns an object with the user's data, or false if none is found.
  */
 
-async function fromRover(id) {
+async function checkRover(id) {
   if (!id) {
     throw new Error("No Discord ID Provided");
   }
@@ -51,7 +53,6 @@ async function fromRover(id) {
     } else {
       return {
         status: "ok",
-        statusCode: 200,
         discordId: id,
         robloxId: body.robloxId,
       };
@@ -67,7 +68,7 @@ async function fromRover(id) {
  * @returns {object|boolean} Returns an object with the user's data, or false if none is found.
  */
 
-async function fromBloxlink(id) {
+async function checkBloxlink(id) {
   if (!id) {
     throw new Error("No Discord ID Provided");
   }
@@ -83,7 +84,6 @@ async function fromBloxlink(id) {
     } else {
       return {
         status: "ok",
-        statusCode: 200,
         discordId: id,
         robloxId: body.primaryAccount,
       };
@@ -96,7 +96,7 @@ async function fromBloxlink(id) {
 /**
  *
  * @param {number | string} id - Roblox ID to check for code.
- * @param {string} code - Code to check for in blurn.
+ * @param {string} code - Code to check for in blurb.
  * @returns {boolean} - Returns true if code is found, false if not.
  */
 
@@ -109,7 +109,7 @@ function checkForCode(id, code) {
 
   fetch(`https://roblox.com/users/${id}/profile`)
     .then((res) => {
-      $ = cheerio.load(res.body);
+      let $ = cheerio.load(res.body);
       const blurb = $("meta[name=description]").attr("content");
 
       if (blurb.indexOf(code) != -1) {
@@ -127,30 +127,34 @@ function checkForCode(id, code) {
  *
  * @param {number} num - Number of words. defaults to 6.
  * @param {array} words - Array of words, defaults to am array of animal names.
- * @returns {string} Returns the generated Words, separated by "and".
+ * @param {boolean} seperate - Whether or not to seperate the words by "and".
+ * @returns {string} Returns the generated words.
  */
 
-function generateRandomWords(num = 6, words = config.words) {
+function generateRandomWords(num = 6, words = config.words, seperate = true) {
   let selected = [];
   for (i = 0; i < num; i++) {
     selected.push(words[Math.floor(Math.random() * words.length)]);
   }
 
-  return selected.join(" and ");
+  if (seperate === true) {
+    return selected.join(" and ");
+  } else {
+    return selected.join(" ");
+  }
 }
 
 /**
  *
  * @param {number} num - Number of emojis. defaults to 10.
+ * @param {array} emojis - Array of emojis, defaults to am array of all emojis.
  * @returns {string} Returns the generated emojis.
  */
 
-function generateRandomEmojis(num = 10) {
+function generateRandomEmojis(num = 10, emojis = config.emojis) {
   let selected = [];
   for (i = 0; i < num; i++) {
-    selected.push(
-      config.emojis[Math.floor(Math.random() * config.emojis.length)]
-    );
+    selected.push(emojis[Math.floor(Math.random() * emojis.length)]);
   }
 
   return selected.join("");
@@ -160,8 +164,8 @@ console.log(generateRandomEmojis());
 
 module.exports = {
   checkDiscordId,
-  fromRover,
-  fromBloxlink,
+  checkRover,
+  checkBloxlink,
   checkForCode,
   generateRandomWords,
   generateRandomEmojis,
