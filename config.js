@@ -1,14 +1,4 @@
-module.exports = {
-  userNotFound: {
-    status: "error",
-    errorCode: 404,
-    error: "User not found.",
-  },
-  noDiscordId: {
-    status: "error",
-    errorCode: 400,
-    error: "No Discord ID provided.",
-  },
+export default {
   words: [
     "aardvark",
     "albatross",
@@ -808,7 +798,3 @@ module.exports = {
     "🔱",
   ],
 };
-
-const lowercased = module.exports.words.map((word) => word.toLowerCase());
-
-lowercased;

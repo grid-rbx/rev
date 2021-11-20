@@ -1,8 +1,9 @@
 {
-  "name": "rev",
+  "name": "@grid-rbx/rev",
   "version": "1.0.0",
   "description": "Roblox account linking, made easy.",
   "main": "index.js",
+  "type": "module",
   "dependencies": {
     "cheerio": "^1.0.0-rc.10",
     "node-fetch": "^2.6.6"

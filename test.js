@@ -1,3 +1,3 @@
-const rev = require("./index");
+import rev from "./index.js";
 
 rev.checkDiscordId(1234);

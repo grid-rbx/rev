@@ -1,10 +1,9 @@
-const fetch = require("node-fetch");
-
-const config = require("./config");
+import fetch from "node-fetch";
+import config from "./config.js";
 
 /**
  *
- * @param {number|string} id - Discord ID to check.
+ * @param {number|string} id Discord ID to check.
  * @returns {object|boolean} Object that contains the Roblox data, or false if nothing is found.
  */
 
@@ -33,7 +32,7 @@ function checkDiscordId(id) {
 
 /**
  *
- * @param {number|string} id - Discord ID to search upon.
+ * @param {number|string} id Discord ID to search upon.
  * @returns {object|boolean} Returns an object with the user's data, or false if none is found.
  */
 
@@ -64,7 +63,7 @@ async function checkRover(id) {
 
 /**
  *
- * @param {number|string} id - Discord ID to search upon.
+ * @param {number|string} id Discord ID to search upon.
  * @returns {object|boolean} Returns an object with the user's data, or false if none is found.
  */
 
@@ -95,9 +94,9 @@ async function checkBloxlink(id) {
 
 /**
  *
- * @param {number | string} id - Roblox ID to check for code.
- * @param {string} code - Code to check for in blurb.
- * @returns {boolean} - Returns true if code is found, false if not.
+ * @param {number | string} id Roblox ID to check for code.
+ * @param {string} code Code to check for in blurb.
+ * @returns {boolean} Returns true if code is found, false if not.
  */
 
 function checkForCode(id, code) {
@@ -125,9 +124,9 @@ function checkForCode(id, code) {
 
 /**
  *
- * @param {number} num - Number of words. defaults to 6.
- * @param {array} words - Array of words, defaults to am array of animal names.
- * @param {boolean} seperate - Whether or not to seperate the words by "and".
+ * @param {number} num Number of words. defaults to 6.
+ * @param {array} words Array of words, defaults to am array of animal names.
+ * @param {boolean} seperate Whether or not to seperate the words by "and".
  * @returns {string} Returns the generated words.
  */
 
@@ -146,8 +145,8 @@ function generateRandomWords(num = 6, words = config.words, seperate = true) {
 
 /**
  *
- * @param {number} num - Number of emojis. defaults to 10.
- * @param {array} emojis - Array of emojis, defaults to am array of all emojis.
+ * @param {number} num Number of emojis. defaults to 10.
+ * @param {array} emojis Array of emojis, defaults to am array of all emojis.
  * @returns {string} Returns the generated emojis.
  */
 
@@ -160,9 +159,7 @@ function generateRandomEmojis(num = 10, emojis = config.emojis) {
   return selected.join("");
 }
 
-console.log(generateRandomEmojis());
-
-module.exports = {
+export default {
   checkDiscordId,
   checkRover,
   checkBloxlink,
