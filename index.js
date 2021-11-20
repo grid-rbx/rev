@@ -2,6 +2,12 @@ const fetch = require("node-fetch");
 
 const config = require("./config");
 
+/**
+ *
+ * @param {number|string} id - Discord ID to check.
+ * @returns {object|boolean} Object that contains the Roblox data, or false if nothing is found.
+ */
+
 function checkDiscordId(id) {
   if (!id) {
     throw new Error("No Discord ID Provided");
@@ -12,61 +18,87 @@ function checkDiscordId(id) {
   const bloxlink = fromBloxlink(id);
   const rover = fromRover(id);
 
-  if (bloxlink.status === "error" && rover.status === "error") {
+  if (bloxlink.status === false && rover.status === false) {
     return false;
   } else if (bloxlink.status === "ok") {
     return bloxlink;
-  } else if (bloxlink.status === "error" && rover.status === "ok") {
+  } else if (bloxlink.status === false && rover.status === "ok") {
     return rover;
   }
 
   return id;
 }
 
+/**
+ *
+ * @param {number|string} id - Discord ID to search upon.
+ * @returns {object|boolean} Returns an object with the user's data, or false if none is found.
+ */
+
 async function fromRover(id) {
+  if (!id) {
+    throw new Error("No Discord ID Provided");
+  }
+
+  id = id.toString();
+
   try {
     const response = await fetch(`https://verify.eryn.io/api/user/${id}`);
     const body = await response.json();
 
     if (body.statusCode === "error") {
-      return config.userNotFound;
+      return false;
+    } else {
+      return {
+        status: "ok",
+        statusCode: 200,
+        discordId: id,
+        robloxId: body.robloxId,
+      };
     }
-    return {
-      status: "ok",
-      statusCode: 200,
-      discordId: id,
-      robloxId: body.robloxId,
-    };
   } catch (error) {
-    return {
-      status: "http-error",
-      error,
-    };
+    throw new Error(error);
   }
 }
 
+/**
+ *
+ * @param {number|string} id - Discord ID to search upon.
+ * @returns {object|boolean} Returns an object with the user's data, or false if none is found.
+ */
+
 async function fromBloxlink(id) {
+  if (!id) {
+    throw new Error("No Discord ID Provided");
+  }
+
+  id = id.toString();
+
   try {
     const response = await fetch(`https://api.blox.link/v1/user/${id}`);
     const body = await response.json();
 
-    if (body.status === "error") {
-      return config.userNotFound;
+    if (body.statusCode === "error") {
+      return false;
+    } else {
+      return {
+        status: "ok",
+        statusCode: 200,
+        discordId: id,
+        robloxId: body.primaryAccount,
+      };
     }
-
-    return {
-      status: "ok",
-      statusCode: 200,
-      discordId: id,
-      robloxId: body.primaryAccount,
-    };
   } catch (error) {
-    return {
-      status: "http-error",
-      error,
-    };
+    throw new Error(error);
   }
 }
+
+/**
+ *
+ * @param {number | string} id - Roblox ID to check for code.
+ * @param {string} code - Code to check for in blurn.
+ * @returns {boolean} - Returns true if code is found, false if not.
+ */
 
 function checkForCode(id, code) {
   if (!id) {
@@ -95,7 +127,7 @@ function checkForCode(id, code) {
  *
  * @param {number} num - Number of words. defaults to 6.
  * @param {array} words - Array of words, defaults to am array of animal names.
- * @returns Generated Words, separated by "and".
+ * @returns {string} Returns the generated Words, separated by "and".
  */
 
 function generateRandomWords(num = 6, words = config.words) {
@@ -110,7 +142,7 @@ function generateRandomWords(num = 6, words = config.words) {
 /**
  *
  * @param {number} num - Number of emojis. defaults to 10.
- * @returns Generated emojis.
+ * @returns {string} Returns the generated emojis.
  */
 
 function generateRandomEmojis(num = 10) {
