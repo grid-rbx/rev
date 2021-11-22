@@ -1,11 +1,10 @@
 {
   "name": "@grid-rbx/rev",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Roblox account linking, made easy.",
   "main": "src/index.js",
   "type": "module",
   "dependencies": {
-    "noblox.js": "^4.12.0",
     "node-fetch": "^2.6.6"
   },
   "scripts": {},
