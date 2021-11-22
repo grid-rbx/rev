@@ -1,5 +1,5 @@
 import fetch from "node-fetch";
-import config from "./config.js";
+import config from "../config.js";
 
 /**
  *
@@ -99,27 +99,31 @@ async function checkBloxlink(id) {
  * @returns {boolean} Returns true if code is found, false if not.
  */
 
-function checkForCode(id, code) {
+async function checkForCode(id, code) {
   if (!id) {
     throw new Error("No ID Provided.");
   } else if (!code) {
     throw new Error("No Code Provided.");
   }
 
-  fetch(`https://roblox.com/users/${id}/profile`)
-    .then((res) => {
-      let $ = cheerio.load(res.body);
-      const blurb = $("meta[name=description]").attr("content");
-
-      if (blurb.indexOf(code) != -1) {
-        return true;
-      } else {
-        return false;
-      }
-    })
-    .catch((error) => {
-      throw new Error(error);
-    });
+  try {
+    // noblox.getBlurb({ userId: id }).then((blurb) => {
+    //   if (blurb.includes(code)) {
+    //     return true;
+    //   } else {
+    //     return false;
+    //   }
+    // });
+    const response = await fetch(`https://users.roproxy.com/v1/users/${id}`);
+    const body = await response.json();
+    if (body.description.includes(code)) {
+      return true;
+    } else {
+      return false;
+    }
+  } catch (error) {
+    throw new Error(error);
+  }
 }
 
 /**
@@ -132,7 +136,7 @@ function checkForCode(id, code) {
 
 function generateRandomWords(num = 6, words = config.words, seperate = true) {
   let selected = [];
-  for (i = 0; i < num; i++) {
+  for (let i = 0; i < num; i++) {
     selected.push(words[Math.floor(Math.random() * words.length)]);
   }
 
@@ -152,7 +156,7 @@ function generateRandomWords(num = 6, words = config.words, seperate = true) {
 
 function generateRandomEmojis(num = 10, emojis = config.emojis) {
   let selected = [];
-  for (i = 0; i < num; i++) {
+  for (let i = 0; i < num; i++) {
     selected.push(emojis[Math.floor(Math.random() * emojis.length)]);
   }
 
