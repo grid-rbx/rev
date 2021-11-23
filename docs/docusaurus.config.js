@@ -89,7 +89,7 @@ const config = {
             },
             {
               label: "API Reference",
-              to: "/docs/",
+              to: "/coming-soon",
             },
           ],
         },
@@ -107,7 +107,7 @@ const config = {
           ],
         },
       ],
-      copyright: `Copyright © ${new Date().getFullYear()} Grid, Inc. Built with ❤️.`,
+      copyright: `Copyright © ${new Date().getFullYear()} Grid, Inc. Built with ❤️`,
     },
     prism: {
       theme: lightCodeTheme,
