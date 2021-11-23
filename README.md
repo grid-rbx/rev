@@ -13,7 +13,7 @@ npm install @grid-rbx/rev
 Then initiate it in your index file
 
 ```javascript
-// CommonJs
+// CommonJS
 const rev = require("@grid-rbx/rev");
 
 // ES6
