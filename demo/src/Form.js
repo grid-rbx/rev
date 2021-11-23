@@ -15,15 +15,21 @@ class Form extends React.Component {
   }
 
   handleSubmit(event) {
-    rev.checkForCode(this.state.value, this.props.code).then((result) => {
-      if (result === true) {
-        alert("Code Found!");
-      } else if (result === false) {
-        alert("Code not found.");
-      } else {
-        console.log(result);
-      }
-    });
+    rev
+      .checkForCode(
+        this.state.value,
+        this.props.code,
+        "https://users.roproxy.com/v1/users/"
+      )
+      .then((result) => {
+        if (result === true) {
+          alert("Code Found!");
+        } else if (result === false) {
+          alert("Code not found.");
+        } else {
+          console.log(result);
+        }
+      });
 
     event.preventDefault();
   }

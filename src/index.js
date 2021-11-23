@@ -96,10 +96,15 @@ async function checkBloxlink(id) {
  *
  * @param {number | string} id Roblox ID to check for code.
  * @param {string} code Code to check for in blurb.
+ * @param {string} proxy Proxy to connect to for data, defaults to Roblox.
  * @returns {boolean} Returns true if code is found, false if not.
  */
 
-async function checkForCode(id, code) {
+async function checkForCode(
+  id,
+  code,
+  proxy = "https://users.roblox.com/v1/users/"
+) {
   if (!id) {
     throw new Error("No ID Provided.");
   } else if (!code) {
@@ -114,7 +119,7 @@ async function checkForCode(id, code) {
     //     return false;
     //   }
     // });
-    const response = await fetch(`https://users.roproxy.com/v1/users/${id}`);
+    const response = await fetch(`${proxy}${id}`);
     const body = await response.json();
     if (body.description.includes(code)) {
       return true;
