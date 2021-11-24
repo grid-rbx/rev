@@ -27,4 +27,4 @@ Please do not take this as a discouragement, as we believe that it is ready for 
 - ⚡️ Generate codes using both emojis and words.
 - 🎯 Check for codes on profiles.
 - 🕵️ Search upon multiple servers for connected Discord accounts for ultimate efficiency.
-- ⛅ Lightweight and efficient, with only two dependencies.
+- ⛅ Lightweight and efficient, with only one dependency.
