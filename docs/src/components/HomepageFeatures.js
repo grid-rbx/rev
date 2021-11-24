@@ -5,6 +5,7 @@ import styles from "./HomepageFeatures.module.css";
 const FeatureList = [
   {
     title: "Easy to Use",
+    Svg: require("../../static/img/undraw_handcrafts_accept.svg").default,
     description: (
       <>
         Rev is built using modern web practices, to make linking Roblox accounts
@@ -14,6 +15,7 @@ const FeatureList = [
   },
   {
     title: "Focus on What Matters",
+    Svg: require("../../static/img/undraw_handcrafts_growth.svg").default,
     description: (
       <>
         Rev lets you focus on your product, and we&apos;ll do the chores. Go
@@ -23,6 +25,7 @@ const FeatureList = [
   },
   {
     title: "Completely Customizable",
+    Svg: require("../../static/img/undraw_handcrafts_balloon.svg").default,
     description: (
       <>
         Want to use a certain set of emojis? We got you. Want to only check on
@@ -35,6 +38,9 @@ const FeatureList = [
 function Feature({ Svg, title, description }) {
   return (
     <div className={clsx("col col--4")}>
+      <div className="text--center">
+        <Svg className={styles.featureSvg} alt={title} />
+      </div>
       <div className="text--center padding-horiz--md">
         <h3>{title}</h3>
         <p>{description}</p>

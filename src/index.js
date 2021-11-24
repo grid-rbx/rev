@@ -17,13 +17,42 @@ function checkDiscordId(id) {
   try {
     const bloxlink = checkBloxlink(id);
     const rover = checkRover(id);
+    const hyra = checkHyra(id);
 
-    if (bloxlink === false && rover === false) {
+    if ((bloxlink, rover, hyra === false)) {
       return false;
     } else if (bloxlink.status === "ok") {
       return bloxlink;
-    } else if (bloxlink === false && rover.status === "ok") {
+    } else if (bloxlink === false) {
       return rover;
+    } else if ((bloxlink, rover === false)) {
+      return hyra;
+    }
+  } catch (error) {
+    throw new Error(error);
+  }
+}
+
+function checkAll(id) {
+  if (!id) {
+    throw new Error("No Discord ID Provided");
+  }
+
+  id = id.toString();
+
+  try {
+    const bloxlink = checkBloxlink(id);
+    const rover = checkRover(id);
+    const hyra = checkHyra(id);
+
+    if ((bloxlink, rover, hyra === false)) {
+      return false;
+    } else {
+      return {
+        bloxlink,
+        rover,
+        hyra,
+      };
     }
   } catch (error) {
     throw new Error(error);
@@ -94,6 +123,37 @@ async function checkBloxlink(id) {
 
 /**
  *
+ * @param {number|string} id Discord ID to search upon.
+ * @returns {object|boolean} Returns an object with the user's data, or false if none is found.
+ */
+
+async function checkHyra(id) {
+  if (!id) {
+    throw new Error("No Discord ID Provided");
+  }
+
+  id = id.toString();
+
+  try {
+    const response = await fetch(`https://api.hyra.io/verify/user/${id}`);
+    const body = await response.json();
+
+    if (body.type === "error") {
+      return false;
+    } else {
+      return {
+        status: "ok",
+        discordId: id,
+        robloxId: body.account,
+      };
+    }
+  } catch (error) {
+    throw new Error(error);
+  }
+}
+
+/**
+ *
  * @param {number | string} id Roblox ID to check for code.
  * @param {string} code Code to check for in blurb.
  * @param {string} proxy Proxy to connect to for data, defaults to Roblox.
@@ -135,21 +195,21 @@ async function checkForCode(
  *
  * @param {number} num Number of words. defaults to 6.
  * @param {array} words Array of words, defaults to am array of animal names.
- * @param {boolean} seperate Whether or not to seperate the words by "and".
+ * @param {string} seperator Seperator, defaults to " and "
  * @returns {string} Returns the generated words.
  */
 
-function generateRandomWords(num = 6, words = config.words, seperate = true) {
+function generateRandomWords(
+  num = 6,
+  words = config.words,
+  seperator = " and "
+) {
   let selected = [];
   for (let i = 0; i < num; i++) {
     selected.push(words[Math.floor(Math.random() * words.length)]);
   }
 
-  if (seperate === true) {
-    return selected.join(" and ");
-  } else {
-    return selected.join(" ");
-  }
+  return selected.join(seperator);
 }
 
 /**
@@ -172,7 +232,9 @@ export default {
   checkDiscordId,
   checkRover,
   checkBloxlink,
+  checkHyra,
   checkForCode,
+  checkAll,
   generateRandomWords,
   generateRandomEmojis,
 };

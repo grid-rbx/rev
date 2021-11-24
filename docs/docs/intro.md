@@ -12,6 +12,10 @@ Rev comes from the two words Roblox, and Evidence as what this module does is gi
 
 This is our Getting Started Documentation, to get you started down the right track for Rev.
 
+:::note
+This is a module to use temporaraily until Roblox adds built-in OAuth.
+:::
+
 ## Disclaimer
 
 Rev is still an in-development library, so expect bugs to appear, and methods to change. We will give a heads-up in advance, but there will almost undoubtedly be breaking changes in the future.

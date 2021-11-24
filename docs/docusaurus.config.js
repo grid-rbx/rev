@@ -39,18 +39,13 @@ const config = {
   ],
 
   themeConfig: {
-    // announcementBar: {
-    //   id: "support_us",
-    //   content:
-    //     'We are looking to revamp our docs, please fill <a target="_blank" rel="noopener noreferrer" href="#">this survey</a>',
-    //   backgroundColor: "#fafbfc",
-    //   textColor: "#091E42",
-    //   isCloseable: false,
-    // },
-    colorMode: {
-      defaultMode: "dark",
-      disableSwitch: true,
-      respectPrefersColorScheme: false,
+    announcementBar: {
+      id: "in_dev",
+      content:
+        'We are still in development. Please read <a target="_blank" rel="noopener noreferrer" href="/docs/intro#disclaimer">the disclaimer</a> to learn more.',
+      backgroundColor: "#636363",
+      textColor: "#ebebeb",
+      isCloseable: true,
     },
     navbar: {
       title: "Rev",
