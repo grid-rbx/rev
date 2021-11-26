@@ -1,6 +1,6 @@
 {
   "name": "@grid-rbx/rev",
-  "version": "0.6.0",
+  "version": "0.7.0",
   "description": "Roblox account linking, made easy.",
   "source": "src/index.js",
   "main": "dist/main.js",
