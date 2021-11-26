@@ -1,0 +1,8 @@
+{
+  "include": ["dist/*.js"],
+  "compilerOptions": {
+    "declaration": true,
+    "emitDeclarationOnly": true,
+    "allowJs": true
+  }
+}

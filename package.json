@@ -2,19 +2,36 @@
   "name": "@grid-rbx/rev",
   "version": "0.6.0",
   "description": "Roblox account linking, made easy.",
-  "main": "src/index.js",
-  "type": "module",
+  "source": "src/index.js",
+  "main": "dist/main.js",
+  "module": "dist/module.js",
   "dependencies": {
     "node-fetch": "^2.6.6"
   },
-  "scripts": {},
+  "exports": {
+    "require": "./dist/main.js",
+    "import": "./dist/module.js",
+    "default": "./dist/module.js"
+  },
+  "scripts": {
+    "prepare": "parcel build && tsc"
+  },
   "repository": "git+https://github.com/grid-rbx/rev.git",
-  "keywords": [],
+  "keywords": [
+    "roblox",
+    "verify",
+    "link",
+    "profile code"
+  ],
   "author": "curse <58047023+cursecodes@users.noreply.github.com>",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/grid-rbx/rev/issues"
   },
   "homepage": "https://github.com/grid-rbx/rev#readme",
-  "private": false
+  "private": false,
+  "devDependencies": {
+    "parcel": "^2.0.1",
+    "typescript": "^4.5.2"
+  }
 }

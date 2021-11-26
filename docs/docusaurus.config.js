@@ -8,14 +8,17 @@ const darkCodeTheme = require("prism-react-renderer/themes/dracula");
 const config = {
   title: "Rev",
   tagline: "Roblox account linking, made easy.",
-  url: "https://your-docusaurus-test-site.com",
+  url: "https://rev.cursecode.me",
   baseUrl: "/",
   onBrokenLinks: "throw",
   onBrokenMarkdownLinks: "warn",
   favicon: "img/favicon.ico",
   organizationName: "grid-rbx", // Usually your GitHub org/user name.
   projectName: "rev", // Usually your repo name.
-
+  i18n: {
+    defaultLocale: "en",
+    locales: ["en", "fr", "de", "es", "ru", "it", "zh", "ja", "pt", "ar"],
+  },
   presets: [
     [
       "@docusaurus/preset-classic",
@@ -26,7 +29,7 @@ const config = {
           ],
           sidebarPath: require.resolve("./sidebars.js"),
           // Please change this to your repo.
-          editUrl: "https://github.com/grid-rbx/rev/edit/main/website/",
+          editUrl: "https://github.com/grid-rbx/rev/edit/main/docs/",
         },
         pages: {
           remarkPlugins: [require("@docusaurus/remark-plugin-npm2yarn")],
@@ -39,6 +42,12 @@ const config = {
   ],
 
   themeConfig: {
+    gtag: {
+      // You can also use your "G-" Measurement ID here.
+      trackingID: "G-M7J72ZEVDG",
+      // Optional fields.
+      anonymizeIP: true, // Should IPs be anonymized?
+    },
     announcementBar: {
       id: "in_dev",
       content:
@@ -54,6 +63,10 @@ const config = {
         src: "img/logo.png",
       },
       items: [
+        {
+          type: "localeDropdown",
+          position: "right",
+        },
         {
           type: "doc",
           docId: "intro",
@@ -84,7 +97,7 @@ const config = {
             },
             {
               label: "API Reference",
-              to: "/coming-soon",
+              to: "/docs/api/checkBloxlink",
             },
           ],
         },

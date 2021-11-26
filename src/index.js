@@ -4,10 +4,10 @@ import config from "../config.js";
 /**
  *
  * @param {number|string} id Discord ID to check.
- * @returns {object|boolean} Object that contains the Roblox data, or false if nothing is found.
+ * @returns {Promise} Promise that reflects an object that contains the Roblox data, or false if nothing is found.
  */
 
-function checkDiscordId(id) {
+async function checkDiscordId(id) {
   if (!id) {
     throw new Error("No Discord ID Provided");
   }
@@ -15,17 +15,17 @@ function checkDiscordId(id) {
   id = id.toString();
 
   try {
-    const bloxlink = checkBloxlink(id);
-    const rover = checkRover(id);
-    const hyra = checkHyra(id);
+    const bloxlink = await checkBloxlink(id);
+    const rover = await checkRover(id);
+    const hyra = await checkHyra(id);
 
-    if ((bloxlink, rover, hyra === false)) {
+    if (isFalsy(bloxlink) && isFalsy(rover) && isFalsy(hyra)) {
       return false;
     } else if (bloxlink.status === "ok") {
       return bloxlink;
-    } else if (bloxlink === false) {
+    } else if (isFalsy(bloxlink)) {
       return rover;
-    } else if ((bloxlink, rover === false)) {
+    } else if (isFalsy(bloxlink) && isFalsy(rover)) {
       return hyra;
     }
   } catch (error) {
@@ -33,7 +33,13 @@ function checkDiscordId(id) {
   }
 }
 
-function checkAll(id) {
+/**
+ *
+ * @param {number|string} id Discord ID to check.
+ * @returns {Promise} Promise that reflects an object that contains all the Roblox data, or false if nothing is found.
+ */
+
+async function checkAllServices(id) {
   if (!id) {
     throw new Error("No Discord ID Provided");
   }
@@ -41,11 +47,11 @@ function checkAll(id) {
   id = id.toString();
 
   try {
-    const bloxlink = checkBloxlink(id);
-    const rover = checkRover(id);
-    const hyra = checkHyra(id);
+    const bloxlink = await checkBloxlink(id);
+    const rover = await checkRover(id);
+    const hyra = await checkHyra(id);
 
-    if ((bloxlink, rover, hyra === false)) {
+    if (isFalsy(bloxlink) && isFalsy(rover) && isFalsy(hyra)) {
       return false;
     } else {
       return {
@@ -62,7 +68,7 @@ function checkAll(id) {
 /**
  *
  * @param {number|string} id Discord ID to search upon.
- * @returns {object|boolean} Returns an object with the user's data, or false if none is found.
+ * @returns {Promise} Promise that reflects an object with the user's data, or false if none is found.
  */
 
 async function checkRover(id) {
@@ -76,13 +82,15 @@ async function checkRover(id) {
     const response = await fetch(`https://verify.eryn.io/api/user/${id}`);
     const body = await response.json();
 
-    if (body.statusCode === "error") {
+    const robloxId = `${body.robloxId}`;
+
+    if (body.status === "error") {
       return false;
     } else {
       return {
         status: "ok",
         discordId: id,
-        robloxId: body.robloxId,
+        robloxId,
       };
     }
   } catch (error) {
@@ -93,7 +101,7 @@ async function checkRover(id) {
 /**
  *
  * @param {number|string} id Discord ID to search upon.
- * @returns {object|boolean} Returns an object with the user's data, or false if none is found.
+ * @returns {Promise} Promise that reflects an object with the user's data, or false if none is found.
  */
 
 async function checkBloxlink(id) {
@@ -107,7 +115,7 @@ async function checkBloxlink(id) {
     const response = await fetch(`https://api.blox.link/v1/user/${id}`);
     const body = await response.json();
 
-    if (body.statusCode === "error") {
+    if (body.status === "error") {
       return false;
     } else {
       return {
@@ -124,7 +132,7 @@ async function checkBloxlink(id) {
 /**
  *
  * @param {number|string} id Discord ID to search upon.
- * @returns {object|boolean} Returns an object with the user's data, or false if none is found.
+ * @returns {Promise} Promise that reflects an object with the user's data, or false if none is found.
  */
 
 async function checkHyra(id) {
@@ -153,22 +161,23 @@ async function checkHyra(id) {
 }
 
 /**
- *
  * @param {number | string} id Roblox ID to check for code.
  * @param {string} code Code to check for in blurb.
  * @param {string} proxy Proxy to connect to for data, defaults to Roblox.
- * @returns {boolean} Returns true if code is found, false if not.
+ * @returns {Promise} Promise that reflects true if code is found, false if not.
  */
 
 async function checkForCode(
   id,
   code,
-  proxy = "https://users.roblox.com/v1/users/"
+  proxy = "https://users.roblox.com/v1/users"
 ) {
-  if (!id) {
-    throw new Error("No ID Provided.");
+  if (!args) {
+    throw new Error("No Arguments Provided.");
   } else if (!code) {
     throw new Error("No Code Provided.");
+  } else if (!id) {
+    throw new Error("No ID Provided.");
   }
 
   try {
@@ -201,8 +210,8 @@ async function checkForCode(
 
 function generateRandomWords(
   num = 6,
-  words = config.words,
-  seperator = " and "
+  seperator = " and ",
+  words = config.words
 ) {
   let selected = [];
   for (let i = 0; i < num; i++) {
@@ -214,18 +223,42 @@ function generateRandomWords(
 
 /**
  *
+ * @param {Object} args Object with arguments inside.
  * @param {number} num Number of emojis. defaults to 10.
  * @param {array} emojis Array of emojis, defaults to am array of all emojis.
  * @returns {string} Returns the generated emojis.
  */
 
-function generateRandomEmojis(num = 10, emojis = config.emojis) {
+function generateRandomEmojis(
+  num = 10,
+  seperator = "",
+  emojis = config.emojis
+) {
   let selected = [];
   for (let i = 0; i < num; i++) {
     selected.push(emojis[Math.floor(Math.random() * emojis.length)]);
   }
 
-  return selected.join("");
+  return selected.join(seperator);
+}
+
+function isFalsy(value) {
+  if (
+    value === false ||
+    value === 0 ||
+    value === -0 ||
+    value === 0n ||
+    value === "" ||
+    value === "" ||
+    value === `` ||
+    value === null ||
+    value === undefined ||
+    value === NaN
+  ) {
+    return true;
+  } else {
+    return false;
+  }
 }
 
 export default {
@@ -234,7 +267,15 @@ export default {
   checkBloxlink,
   checkHyra,
   checkForCode,
-  checkAll,
+  checkAllServices,
   generateRandomWords,
   generateRandomEmojis,
+  defaultConfig: {
+    words: config.words,
+    emojis: config.emojis,
+    wordSeperator: " and ",
+    wordAmount: 6,
+    emojiAmount: 10,
+    emojiSeperator: "",
+  },
 };
