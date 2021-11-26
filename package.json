@@ -14,7 +14,8 @@
     "default": "./dist/module.js"
   },
   "scripts": {
-    "prepare": "parcel build && tsc"
+    "prepare": "parcel build && tsc",
+    "test": "echo 'tests not done'"
   },
   "repository": "git+https://github.com/grid-rbx/rev.git",
   "keywords": [
