@@ -51,15 +51,11 @@ async function checkAllServices(id) {
     const rover = await checkRover(id);
     const hyra = await checkHyra(id);
 
-    if (isFalsy(bloxlink) && isFalsy(rover) && isFalsy(hyra)) {
-      return false;
-    } else {
-      return {
+    return isFalsy(bloxlink) && isFalsy(rover) && isFalsy(hyra) ? false : {
         bloxlink,
         rover,
         hyra,
       };
-    }
   } catch (error) {
     throw new Error(error);
   }
@@ -84,15 +80,11 @@ async function checkRover(id) {
 
     const robloxId = `${body.robloxId}`;
 
-    if (body.status === "error") {
-      return false;
-    } else {
-      return {
+    return body.status === "error" ? false : {
         status: "ok",
         discordId: id,
         robloxId,
       };
-    }
   } catch (error) {
     throw new Error(error);
   }
@@ -115,15 +107,11 @@ async function checkBloxlink(id) {
     const response = await fetch(`https://api.blox.link/v1/user/${id}`);
     const body = await response.json();
 
-    if (body.status === "error") {
-      return false;
-    } else {
-      return {
+    return body.status === "error" ? false : {
         status: "ok",
         discordId: id,
         robloxId: body.primaryAccount,
       };
-    }
   } catch (error) {
     throw new Error(error);
   }
@@ -146,15 +134,11 @@ async function checkHyra(id) {
     const response = await fetch(`https://api.hyra.io/verify/user/${id}`);
     const body = await response.json();
 
-    if (body.type === "error") {
-      return false;
-    } else {
-      return {
+    return body.type === "error" ? false : {
         status: "ok",
         discordId: id,
         robloxId: body.account,
       };
-    }
   } catch (error) {
     throw new Error(error);
   }
@@ -179,11 +163,7 @@ async function checkForCode(id, code, proxy = config.usersEndpoint) {
   try {
     const response = await fetch(`${proxy}${id}`);
     const body = await response.json();
-    if (body.description.includes(code)) {
-      return true;
-    } else {
-      return false;
-    }
+    return body.description.includes(code) ? true : false;
   } catch (error) {
     throw new Error(error);
   }
@@ -232,8 +212,7 @@ function generateRandomEmojis(
 }
 
 function isFalsy(value) {
-  if (
-    value === false ||
+  return value === false ||
     value === 0 ||
     value === -0 ||
     value === 0n ||
@@ -242,12 +221,7 @@ function isFalsy(value) {
     value === `` ||
     value === null ||
     value === undefined ||
-    value === NaN
-  ) {
-    return true;
-  } else {
-    return false;
-  }
+    value === NaN ? true : false;
 }
 
 export default {
