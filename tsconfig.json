@@ -1,5 +1,5 @@
 {
-  "include": ["dist/*.js"],
+  "include": ["src/*.js"],
   "compilerOptions": {
     "declaration": true,
     "emitDeclarationOnly": true,

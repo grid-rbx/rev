@@ -181,13 +181,6 @@ async function checkForCode(
   }
 
   try {
-    // noblox.getBlurb({ userId: id }).then((blurb) => {
-    //   if (blurb.includes(code)) {
-    //     return true;
-    //   } else {
-    //     return false;
-    //   }
-    // });
     const response = await fetch(`${proxy}${id}`);
     const body = await response.json();
     if (body.description.includes(code)) {
