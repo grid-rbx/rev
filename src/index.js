@@ -25,7 +25,7 @@ async function checkDiscordId(id) {
       return bloxlink;
     } else if (isFalsy(bloxlink)) {
       return rover;
-    } else if (isFalsy(bloxlink) && isFalsy(rover)) {
+    } else {
       return hyra;
     }
   } catch (error) {
@@ -51,11 +51,13 @@ async function checkAllServices(id) {
     const rover = await checkRover(id);
     const hyra = await checkHyra(id);
 
-    return isFalsy(bloxlink) && isFalsy(rover) && isFalsy(hyra) ? false : {
-        bloxlink,
-        rover,
-        hyra,
-      };
+    return isFalsy(bloxlink) && isFalsy(rover) && isFalsy(hyra)
+      ? false
+      : {
+          bloxlink,
+          rover,
+          hyra,
+        };
   } catch (error) {
     throw new Error(error);
   }
@@ -80,11 +82,13 @@ async function checkRover(id) {
 
     const robloxId = `${body.robloxId}`;
 
-    return body.status === "error" ? false : {
-        status: "ok",
-        discordId: id,
-        robloxId,
-      };
+    return body.status === "error"
+      ? false
+      : {
+          status: "ok",
+          discordId: id,
+          robloxId,
+        };
   } catch (error) {
     throw new Error(error);
   }
@@ -107,11 +111,13 @@ async function checkBloxlink(id) {
     const response = await fetch(`https://api.blox.link/v1/user/${id}`);
     const body = await response.json();
 
-    return body.status === "error" ? false : {
-        status: "ok",
-        discordId: id,
-        robloxId: body.primaryAccount,
-      };
+    return body.status === "error"
+      ? false
+      : {
+          status: "ok",
+          discordId: id,
+          robloxId: body.primaryAccount,
+        };
   } catch (error) {
     throw new Error(error);
   }
@@ -134,11 +140,13 @@ async function checkHyra(id) {
     const response = await fetch(`https://api.hyra.io/verify/user/${id}`);
     const body = await response.json();
 
-    return body.type === "error" ? false : {
-        status: "ok",
-        discordId: id,
-        robloxId: body.account,
-      };
+    return body.type === "error"
+      ? false
+      : {
+          status: "ok",
+          discordId: id,
+          robloxId: body.account,
+        };
   } catch (error) {
     throw new Error(error);
   }
@@ -221,7 +229,9 @@ function isFalsy(value) {
     value === `` ||
     value === null ||
     value === undefined ||
-    value === NaN ? true : false;
+    value === NaN
+    ? true
+    : false;
 }
 
 export default {
