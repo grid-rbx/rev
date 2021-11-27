@@ -15,10 +15,6 @@ const config = {
   favicon: "img/favicon.ico",
   organizationName: "grid-rbx", // Usually your GitHub org/user name.
   projectName: "rev", // Usually your repo name.
-  i18n: {
-    defaultLocale: "en",
-    locales: ["en", "fr", "de", "es", "ru", "it", "zh", "ja", "pt", "ar"],
-  },
   presets: [
     [
       "@docusaurus/preset-classic",
@@ -63,10 +59,6 @@ const config = {
         src: "img/logo.png",
       },
       items: [
-        {
-          type: "localeDropdown",
-          position: "right",
-        },
         {
           type: "doc",
           docId: "intro",
