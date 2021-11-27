@@ -1,4 +1,9 @@
 export default {
+  wordSeperator: " and ",
+  wordAmount: 6,
+  emojiAmount: 10,
+  emojiSeperator: "",
+  usersEndpoint: "https://users.roblox.com/v1/users",
   words: [
     "aardvark",
     "albatross",

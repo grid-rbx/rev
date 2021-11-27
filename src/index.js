@@ -167,11 +167,7 @@ async function checkHyra(id) {
  * @returns {Promise} Promise that reflects true if code is found, false if not.
  */
 
-async function checkForCode(
-  id,
-  code,
-  proxy = "https://users.roblox.com/v1/users"
-) {
+async function checkForCode(id, code, proxy = config.usersEndpoint) {
   if (!args) {
     throw new Error("No Arguments Provided.");
   } else if (!code) {
@@ -202,8 +198,8 @@ async function checkForCode(
  */
 
 function generateRandomWords(
-  num = 6,
-  seperator = " and ",
+  num = config.wordAmount,
+  seperator = config.wordSeperator,
   words = config.words
 ) {
   let selected = [];
@@ -223,8 +219,8 @@ function generateRandomWords(
  */
 
 function generateRandomEmojis(
-  num = 10,
-  seperator = "",
+  num = config.emojiAmount,
+  seperator = config.emojiSeperator,
   emojis = config.emojis
 ) {
   let selected = [];
@@ -266,9 +262,10 @@ export default {
   defaultConfig: {
     words: config.words,
     emojis: config.emojis,
-    wordSeperator: " and ",
-    wordAmount: 6,
-    emojiAmount: 10,
-    emojiSeperator: "",
+    wordSeperator: config.wordSeperator,
+    wordAmount: config.wordAmount,
+    emojiAmount: config.emojiAmount,
+    emojiSeperator: config.emojiSeperator,
+    usersEndpoint: config.usersEndpoint,
   },
 };
