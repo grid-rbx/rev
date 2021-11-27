@@ -1,66 +1,18 @@
 import fetch from "node-fetch";
 import config from "../config.js";
 
-/**
- *
- * @param {number|string} id Discord ID to check.
- * @returns {Promise} Promise that reflects an object that contains the Roblox data, or false if nothing is found.
- */
-
-async function checkDiscordId(id) {
-  if (!id) {
-    throw new Error("No Discord ID Provided");
-  }
-
-  id = id.toString();
-
-  try {
-    const bloxlink = await checkBloxlink(id);
-    const rover = await checkRover(id);
-    const hyra = await checkHyra(id);
-
-    if (isFalsy(bloxlink) && isFalsy(rover) && isFalsy(hyra)) {
-      return false;
-    } else if (bloxlink.status === "ok") {
-      return bloxlink;
-    } else if (isFalsy(bloxlink)) {
-      return rover;
-    } else {
-      return hyra;
-    }
-  } catch (error) {
-    throw new Error(error);
-  }
-}
-
-/**
- *
- * @param {number|string} id Discord ID to check.
- * @returns {Promise} Promise that reflects an object that contains all the Roblox data, or false if nothing is found.
- */
-
-async function checkAllServices(id) {
-  if (!id) {
-    throw new Error("No Discord ID Provided");
-  }
-
-  id = id.toString();
-
-  try {
-    const bloxlink = await checkBloxlink(id);
-    const rover = await checkRover(id);
-    const hyra = await checkHyra(id);
-
-    return isFalsy(bloxlink) && isFalsy(rover) && isFalsy(hyra)
-      ? false
-      : {
-          bloxlink,
-          rover,
-          hyra,
-        };
-  } catch (error) {
-    throw new Error(error);
-  }
+function isFalsy(value) {
+  return value === false ||
+    value === 0 ||
+    value === 0n ||
+    value === "" ||
+    value === "" ||
+    value === `` ||
+    value === null ||
+    value === undefined ||
+    isNaN(value)
+    ? true
+    : false;
 }
 
 /**
@@ -146,6 +98,68 @@ async function checkHyra(id) {
           status: "ok",
           discordId: id,
           robloxId: body.account,
+        };
+  } catch (error) {
+    throw new Error(error);
+  }
+}
+
+/**
+ *
+ * @param {number|string} id Discord ID to check.
+ * @returns {Promise} Promise that reflects an object that contains the Roblox data, or false if nothing is found.
+ */
+
+async function checkDiscordId(id) {
+  if (!id) {
+    throw new Error("No Discord ID Provided");
+  }
+
+  id = id.toString();
+
+  try {
+    const bloxlink = await checkBloxlink(id);
+    const rover = await checkRover(id);
+    const hyra = await checkHyra(id);
+
+    if (isFalsy(bloxlink) && isFalsy(rover) && isFalsy(hyra)) {
+      return false;
+    } else if (bloxlink.status === "ok") {
+      return bloxlink;
+    } else if (isFalsy(bloxlink)) {
+      return rover;
+    } else {
+      return hyra;
+    }
+  } catch (error) {
+    throw new Error(error);
+  }
+}
+
+/**
+ *
+ * @param {number|string} id Discord ID to check.
+ * @returns {Promise} Promise that reflects an object that contains all the Roblox data, or false if nothing is found.
+ */
+
+async function checkAllServices(id) {
+  if (!id) {
+    throw new Error("No Discord ID Provided");
+  }
+
+  id = id.toString();
+
+  try {
+    const bloxlink = await checkBloxlink(id);
+    const rover = await checkRover(id);
+    const hyra = await checkHyra(id);
+
+    return isFalsy(bloxlink) && isFalsy(rover) && isFalsy(hyra)
+      ? false
+      : {
+          bloxlink,
+          rover,
+          hyra,
         };
   } catch (error) {
     throw new Error(error);
