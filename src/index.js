@@ -226,7 +226,7 @@ function isFalsy(value) {
     value === `` ||
     value === null ||
     value === undefined ||
-    value === NaN
+    isNaN(foo)
     ? true
     : false;
 }
