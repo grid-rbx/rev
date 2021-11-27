@@ -220,7 +220,6 @@ function generateRandomEmojis(
 function isFalsy(value) {
   return value === false ||
     value === 0 ||
-    value === -0 ||
     value === 0n ||
     value === "" ||
     value === "" ||
