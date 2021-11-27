@@ -231,20 +231,6 @@ function generateRandomEmojis(
   return selected.join(seperator);
 }
 
-function isFalsy(value) {
-  return value === false ||
-    value === 0 ||
-    value === 0n ||
-    value === "" ||
-    value === "" ||
-    value === `` ||
-    value === null ||
-    value === undefined ||
-    isNaN(value)
-    ? true
-    : false;
-}
-
 export default {
   checkDiscordId,
   checkRover,
