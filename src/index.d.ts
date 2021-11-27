@@ -10,10 +10,11 @@ declare namespace _default {
     export namespace defaultConfig {
         const words: string[];
         const emojis: string[];
-        const wordSeperator: string;
-        const wordAmount: number;
-        const emojiAmount: number;
-        const emojiSeperator: string;
+        const wordSeperator: any;
+        const wordAmount: any;
+        const emojiAmount: any;
+        const emojiSeperator: any;
+        const usersEndpoint: any;
     }
 }
 export default _default;
@@ -69,4 +70,4 @@ declare function generateRandomWords(num?: number, seperator?: string, words?: a
  * @param {array} emojis Array of emojis, defaults to am array of all emojis.
  * @returns {string} Returns the generated emojis.
  */
-declare function generateRandomEmojis(num?: number, seperator?: string, emojis?: any[]): string;
+declare function generateRandomEmojis(num?: number, seperator?: any, emojis?: any[]): string;
