@@ -192,8 +192,8 @@ async function checkForCode(id, code, proxy = config.usersEndpoint) {
 /**
  *
  * @param {number} num Number of words. defaults to 6.
- * @param {array} words Array of words, defaults to am array of animal names.
  * @param {string} seperator Seperator, defaults to " and "
+ * @param {array} words Array of words, defaults to am array of animal names.
  * @returns {string} Returns the generated words.
  */
 
@@ -212,8 +212,9 @@ function generateRandomWords(
 
 /**
  *
- * @param {Object} args Object with arguments inside.
+ 
  * @param {number} num Number of emojis. defaults to 10.
+ * @param {Object} seperator Seperator, defaults to ""
  * @param {array} emojis Array of emojis, defaults to am array of all emojis.
  * @returns {string} Returns the generated emojis.
  */
