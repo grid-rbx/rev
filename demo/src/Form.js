@@ -26,8 +26,6 @@ class Form extends React.Component {
           alert("Code Found!");
         } else if (result === false) {
           alert("Code not found.");
-        } else {
-          console.log(result);
         }
       });
 
