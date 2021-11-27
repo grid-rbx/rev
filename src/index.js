@@ -160,9 +160,7 @@ async function checkHyra(id) {
  */
 
 async function checkForCode(id, code, proxy = config.usersEndpoint) {
-  if (!args) {
-    throw new Error("No Arguments Provided.");
-  } else if (!code) {
+  if (!code) {
     throw new Error("No Code Provided.");
   } else if (!id) {
     throw new Error("No ID Provided.");
