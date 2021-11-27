@@ -97,7 +97,7 @@ const config = {
             },
             {
               label: "API Reference",
-              to: "/docs/api/checkBloxlink",
+              to: "/docs/api/check-bloxlink",
             },
           ],
         },

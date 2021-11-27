@@ -22,7 +22,7 @@ import rev from "@grid-rbx/rev;
 
 ## Documentation
 
-Documentation can be found [here](https://rev.cursecode.me/docs)
+Documentation can be found [here](https://rev.cursecode.me)
 
 ## Contributing
 
