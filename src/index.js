@@ -188,7 +188,7 @@ function generateRandomWords(
   seperator = config.wordSeperator,
   words = config.words
 ) {
-  let selected = [];
+  const selected = [];
   for (let i = 0; i < num; i++) {
     selected.push(words[Math.floor(Math.random() * words.length)]);
   }
@@ -209,7 +209,7 @@ function generateRandomEmojis(
   seperator = config.emojiSeperator,
   emojis = config.emojis
 ) {
-  let selected = [];
+  const selected = [];
   for (let i = 0; i < num; i++) {
     selected.push(emojis[Math.floor(Math.random() * emojis.length)]);
   }
