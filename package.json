@@ -3,6 +3,7 @@
   "version": "0.7.0",
   "description": "Roblox account linking, made easy.",
   "main": "src/index.js",
+  "type": "module",
   "dependencies": {
     "node-fetch": "^2.6.6"
   },
