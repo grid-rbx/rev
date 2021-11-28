@@ -22,10 +22,8 @@ Then initiate it in your index file
 // CommonJS
 const rev = require("@grid-rbx/rev");
 
-// ES6
+// ES6 & Browser
 import rev from "@grid-rbx/rev;
-
-// Browser
 import rev from "https://cdn.skypack.dev/@grid-rbx/rev";
 ```
 
