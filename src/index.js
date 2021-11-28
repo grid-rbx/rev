@@ -3,20 +3,6 @@
 import fetch from "node-fetch";
 import config from "../config.js";
 
-function isFalsy(value) {
-  return value === false ||
-    value === 0 ||
-    value === 0n ||
-    value === "" ||
-    value === "" ||
-    value === `` ||
-    value === null ||
-    value === undefined ||
-    isNaN(value)
-    ? true
-    : false;
-}
-
 /**
  *
  * @param {number|string} id Discord ID to search upon.
@@ -120,15 +106,13 @@ async function checkDiscordId(id) {
   id = id.toString();
 
   try {
-    const bloxlink = await checkBloxlink(id);
-    const rover = await checkRover(id);
-    const hyra = await checkHyra(id);
+    const all = await checkAllServices(id);
 
-    if (isFalsy(bloxlink) && isFalsy(rover) && isFalsy(hyra)) {
+    if ((all = false)) {
       return false;
-    } else if (bloxlink.status === "ok") {
+    } else if (all.bloxlink.status === "ok") {
       return bloxlink;
-    } else if (isFalsy(bloxlink)) {
+    } else if (all.bloxlink === false) {
       return rover;
     } else {
       return hyra;
@@ -156,7 +140,7 @@ async function checkAllServices(id) {
     const rover = await checkRover(id);
     const hyra = await checkHyra(id);
 
-    return isFalsy(bloxlink) && isFalsy(rover) && isFalsy(hyra)
+    return bloxlink === false && rover === false && hyra === false
       ? false
       : {
           bloxlink,
