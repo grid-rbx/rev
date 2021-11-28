@@ -26,7 +26,7 @@ const rev = require("@grid-rbx/rev");
 import rev from "@grid-rbx/rev;
 
 // Browser
-import rev from 'https://cdn.skypack.dev/@grid-rbx/rev';
+import rev from "https://cdn.skypack.dev/@grid-rbx/rev";
 ```
 
 ## Documentation
