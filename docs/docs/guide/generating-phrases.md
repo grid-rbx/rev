@@ -30,7 +30,7 @@ Pretty cool, right? The words generated come from a list of animal names that we
 
 ### Amount Of Words
 
-Now let's say we wanted to have only three words generated? Thats's pretty simple, just pass in `3` as the first argument, which is the `num` argument which decides how many words are generated:
+Now let's say we wanted to have only three words generated? Thats's pretty simple, just pass in `3` as the first argument, which is the `num` argument.
 
 ```javascript title="index.js"
 const words = rev.generateRandomWords(3);
@@ -52,7 +52,7 @@ When you are using these codes to put on a Roblox profile, please use the defaul
 
 ### Seperators
 
-You may want to have your phrases by seperated by something other than " and ", like perhaps a comma: ", " or something completely random like " but also ". This is possible using the `seperator` argument.
+You may want to have your phrases by seperated by something other than " and ", like perhaps a comma: ", " or something completely random such as " ooga booga ". This is possible using the `seperator` argument.
 
 ```javascript title="index.js"
 const words = rev.generateRandomWords(3, " seperator ");
@@ -78,12 +78,12 @@ Now, you may want to have an array of your own words that you'd like to use, and
 
 ```javascript title="index.js"
 const nature = ["tree", "flower", "shrub", "flytrap", "grass", "bush"];
-const words = rev.generateRandomWords((num = 3), (seperator = " and "));
+const words = rev.generateRandomWords(3, " and ", nature);
 
 console.log(words);
 ```
 
-If you run your file, you will now see an output dimilar to:
+If you run your file, you will now see an output similar to:
 
 ```bash title="Console"
 shrub and grass and tree
@@ -114,3 +114,4 @@ And you should see an output a little something like this:
 ```bash title="Console"
 *emojis*
 ```
+This method supports all the same arguments as `generateRandomWords`, so feel free to use them.
