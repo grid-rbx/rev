@@ -106,13 +106,15 @@ async function checkDiscordId(id) {
   id = id.toString();
 
   try {
-    const all = await checkAllServices(id);
+    const bloxlink = await checkBloxlink(id);
+    const rover = await checkRover(id);
+    const hyra = await checkHyra(id);
 
-    if ((all = false)) {
+    if (bloxlink === false && rover === false && hyra == false) {
       return false;
-    } else if (all.bloxlink.status === "ok") {
+    } else if (bloxlink.status === "ok") {
       return bloxlink;
-    } else if (all.bloxlink === false) {
+    } else if (bloxlink === false) {
       return rover;
     } else {
       return hyra;
