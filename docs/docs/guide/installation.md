@@ -4,7 +4,7 @@ sidebar_position: 1
 
 # Installation
 
-Installing Rev is as simple as installing it with NPM or Yarn
+Installing Rev is as simple as installing it with npm or Yarn
 
 ```bash npm2yarn
 npm install @grid-rbx/rev
