@@ -66,6 +66,12 @@ const config = {
           label: "Docs",
         },
         {
+          type: "doc",
+          docId: "api-ref",
+          position: "left",
+          label: "API",
+        },
+        {
           href: "/changelog",
           position: "left",
           label: "Changelog",
@@ -89,7 +95,7 @@ const config = {
             },
             {
               label: "API Reference",
-              to: "/docs/api/check-bloxlink",
+              to: "/docs/api-ref",
             },
           ],
         },
