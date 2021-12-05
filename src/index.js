@@ -4,7 +4,7 @@ import fetch from "node-fetch";
 import config from "../config.js";
 
 /**
- *
+ * Function to search for a Roblox account cia a Discord ID from Rover
  * @param {number|string} id Discord ID to search upon.
  * @returns {Promise} Promise that reflects an object with the user's data, or false if none is found.
  */
@@ -35,7 +35,7 @@ async function checkRover(id) {
 }
 
 /**
- *
+ * Function to search for a Roblox account cia a Discord ID from Bloxlink
  * @param {number|string} id Discord ID to search upon.
  * @returns {Promise} Promise that reflects an object with the user's data, or false if none is found.
  */
@@ -64,7 +64,7 @@ async function checkBloxlink(id) {
 }
 
 /**
- *
+ * Function to search for a Roblox account cia a Discord ID from Hyra
  * @param {number|string} id Discord ID to search upon.
  * @returns {Promise} Promise that reflects an object with the user's data, or false if none is found.
  */
@@ -93,7 +93,7 @@ async function checkHyra(id) {
 }
 
 /**
- *
+ * Function to check all services, and return a single point of truth Roblox ID
  * @param {number|string} id Discord ID to check.
  * @returns {Promise} Promise that reflects an object that contains the Roblox data, or false if nothing is found.
  */
@@ -125,9 +125,9 @@ async function checkDiscordId(id) {
 }
 
 /**
- *
+ * Function to check all services, and return the data fron all of them
  * @param {number|string} id Discord ID to check.
- * @returns {Promise} Promise that reflects an object that contains all the Roblox data, or false if nothing is found.
+ * @returns {Promise} Promise that reflects an object that contains all the services' data, or false if nothing is found.
  */
 
 async function checkAllServices(id) {
@@ -155,6 +155,7 @@ async function checkAllServices(id) {
 }
 
 /**
+ * Function to check if a string is on a Roblox user's profile
  * @param {number | string} id Roblox ID to check for code.
  * @param {string} code Code to check for in blurb.
  * @param {string} proxy Proxy to connect to for data, defaults to Roblox.
@@ -178,7 +179,7 @@ async function checkForCode(id, code, proxy = config.usersEndpoint) {
 }
 
 /**
- *
+ * Function to generate a random set of words
  * @param {number} num Number of words. defaults to 6.
  * @param {string} seperator Seperator, defaults to " and "
  * @param {array} words Array of words, defaults to am array of animal names.
@@ -199,8 +200,7 @@ function generateRandomWords(
 }
 
 /**
- *
- 
+ * Function to generate a random set of words
  * @param {number} num Number of emojis. defaults to 10.
  * @param {Object} seperator Seperator, defaults to ""
  * @param {array} emojis Array of emojis, defaults to am array of all emojis.
