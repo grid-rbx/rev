@@ -66,8 +66,7 @@ const config = {
           label: "Docs",
         },
         {
-          type: "doc",
-          docId: "api-ref",
+          href: "/docs/api-ref",
           position: "left",
           label: "API",
         },
