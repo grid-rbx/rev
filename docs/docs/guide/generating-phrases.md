@@ -112,6 +112,9 @@ console.log(emojis);
 And you should see an output a little something like this:
 
 ```bash title="Console"
-*emojis*
+🚋💡🙇☔💵🍧🐾😍👛🍢
 ```
+
 This method supports all the same arguments as `generateRandomWords`, so feel free to use them.
+
+And just like that, you're done! Good job!
