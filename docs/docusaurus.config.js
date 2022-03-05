@@ -25,7 +25,7 @@ const config = {
           ],
           sidebarPath: require.resolve("./sidebars.js"),
           // Please change this to your repo.
-          editUrl: "https://github.com/grid-rbx/rev/edit/main/docs/",
+          editUrl: "https://github.com/grid-rbx/rev/edit/master/docs/",
         },
         pages: {
           remarkPlugins: [require("@docusaurus/remark-plugin-npm2yarn")],
