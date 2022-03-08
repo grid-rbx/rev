@@ -1,5 +1,17 @@
 # Changelog
 
+## 2.1.0 (07/03/2022)
+
+- (base) node_modules changes 8df2339
+- (docs) Remove unnecessary images 1f8c33d
+- (docs) New article 0573386
+- (docs) Updating docs 4a36eb8
+- (base) More optimization patches 7c46939
+- (base) Little patchon checkForCode 4860488
+- (demo) Deprecated demo 6c18a79
+
+https://github.com/grid-rbx/rev/compare/v2.0.0...v2.1.0
+
 ## 2.0.0: Stable! (07/03/2022)
 
 ### We're stable!
