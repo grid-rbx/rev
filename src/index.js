@@ -82,11 +82,11 @@ async function checkDiscordId(id) {
     const bloxlink = await checkBloxlink(id);
     const rover = await checkRover(id);
 
-    if (bloxlink === false && rover === false) {
+    if (!bloxlink && !rover) {
       return false;
     } else if (bloxlink.status === "ok") {
       return bloxlink;
-    } else if (bloxlink === false) {
+    } else if (!bloxlink) {
       return rover;
     }
   } catch (error) {
@@ -111,7 +111,7 @@ async function checkAllServices(id) {
     const bloxlink = await checkBloxlink(id);
     const rover = await checkRover(id);
 
-    return bloxlink === false && rover === false
+    return !bloxlink && !rover
       ? false
       : {
           bloxlink,
@@ -135,8 +135,9 @@ async function checkForCode(id, code, proxy = config.usersEndpoint) {
     throw new Error("No Code Provided.");
   } else if (!id) {
     throw new Error("No ID Provided.");
+  } else if (!proxy.endsWith("/")) {
+    throw new Error("Remember the '/' at the end of the proxy URL");
   }
-
   try {
     const { body } = await p(`${proxy}${id}`);
 
