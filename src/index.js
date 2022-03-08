@@ -1,7 +1,11 @@
 "use strict";
 
-import fetch from "node-fetch";
+import phin from "phin";
 import config from "../config.js";
+
+const p = phin.defaults({
+  parse: "json",
+});
 
 /**
  * Function to search for a Roblox account cia a Discord ID from Rover
@@ -17,8 +21,7 @@ async function checkRover(id) {
   id = id.toString();
 
   try {
-    const response = await fetch(`https://verify.eryn.io/api/user/${id}`);
-    const body = await response.json();
+    const { body } = await p(`https://verify.eryn.io/api/user/${id}`);
 
     const robloxId = `${body.robloxId}`;
 
@@ -48,8 +51,7 @@ async function checkBloxlink(id) {
   id = id.toString();
 
   try {
-    const response = await fetch(`https://api.blox.link/v1/user/${id}`);
-    const body = await response.json();
+    const { body } = await p(`https://api.blox.link/v1/user/${id}`);
 
     return body.status === "error"
       ? false
@@ -57,35 +59,6 @@ async function checkBloxlink(id) {
           status: "ok",
           discordId: id,
           robloxId: body.primaryAccount,
-        };
-  } catch (error) {
-    throw new Error(error);
-  }
-}
-
-/**
- * Function to search for a Roblox account cia a Discord ID from Hyra
- * @param {number|string} id Discord ID to search upon.
- * @returns {Promise} Promise that reflects an object with the user's data, or false if none is found.
- */
-
-async function checkHyra(id) {
-  if (!id) {
-    throw new Error("No Discord ID Provided");
-  }
-
-  id = id.toString();
-
-  try {
-    const response = await fetch(`https://api.hyra.io/verify/user/${id}`);
-    const body = await response.json();
-
-    return body.type === "error"
-      ? false
-      : {
-          status: "ok",
-          discordId: id,
-          robloxId: body.account,
         };
   } catch (error) {
     throw new Error(error);
@@ -108,16 +81,13 @@ async function checkDiscordId(id) {
   try {
     const bloxlink = await checkBloxlink(id);
     const rover = await checkRover(id);
-    const hyra = await checkHyra(id);
 
-    if (bloxlink === false && rover === false && hyra == false) {
+    if (bloxlink === false && rover === false) {
       return false;
     } else if (bloxlink.status === "ok") {
       return bloxlink;
     } else if (bloxlink === false) {
       return rover;
-    } else {
-      return hyra;
     }
   } catch (error) {
     throw new Error(error);
@@ -140,14 +110,12 @@ async function checkAllServices(id) {
   try {
     const bloxlink = await checkBloxlink(id);
     const rover = await checkRover(id);
-    const hyra = await checkHyra(id);
 
-    return bloxlink === false && rover === false && hyra === false
+    return bloxlink === false && rover === false
       ? false
       : {
           bloxlink,
           rover,
-          hyra,
         };
   } catch (error) {
     throw new Error(error);
@@ -170,8 +138,8 @@ async function checkForCode(id, code, proxy = config.usersEndpoint) {
   }
 
   try {
-    const response = await fetch(`${proxy}${id}`);
-    const body = await response.json();
+    const { body } = await p(`${proxy}${id}`);
+
     return body.description.includes(code) ? true : false;
   } catch (error) {
     throw new Error(error);
@@ -224,7 +192,6 @@ export default {
   checkDiscordId,
   checkRover,
   checkBloxlink,
-  checkHyra,
   checkForCode,
   checkAllServices,
   generateRandomWords,
