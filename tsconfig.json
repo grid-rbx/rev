@@ -1,5 +1,5 @@
 {
-  "include": ["src/*.js", "src/index.js"],
+  "include": ["src/*.mjs", "src/index.mjs"],
   "compilerOptions": {
     "declaration": true,
     "emitDeclarationOnly": true,
