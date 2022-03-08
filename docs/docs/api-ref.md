@@ -2,26 +2,33 @@
 
 <dl>
 <dt><a href="#checkRover">checkRover(id)</a> ⇒ <code>Promise</code></dt>
-<dd></dd>
+<dd><p>Function to search for a Roblox account cia a Discord ID from Rover</p>
+</dd>
 <dt><a href="#checkBloxlink">checkBloxlink(id)</a> ⇒ <code>Promise</code></dt>
-<dd></dd>
-<dt><a href="#checkHyra">checkHyra(id)</a> ⇒ <code>Promise</code></dt>
-<dd></dd>
+<dd><p>Function to search for a Roblox account cia a Discord ID from Bloxlink</p>
+</dd>
 <dt><a href="#checkDiscordId">checkDiscordId(id)</a> ⇒ <code>Promise</code></dt>
-<dd></dd>
+<dd><p>Function to check all services, and return a single point of truth Roblox ID</p>
+</dd>
 <dt><a href="#checkAllServices">checkAllServices(id)</a> ⇒ <code>Promise</code></dt>
-<dd></dd>
+<dd><p>Function to check all services, and return the data fron all of them</p>
+</dd>
 <dt><a href="#checkForCode">checkForCode(id, code, proxy)</a> ⇒ <code>Promise</code></dt>
-<dd></dd>
+<dd><p>Function to check if a string is on a Roblox user&#39;s profile</p>
+</dd>
 <dt><a href="#generateRandomWords">generateRandomWords(num, seperator, words)</a> ⇒ <code>string</code></dt>
-<dd></dd>
+<dd><p>Function to generate a random set of words</p>
+</dd>
 <dt><a href="#generateRandomEmojis">generateRandomEmojis(num, seperator, emojis)</a> ⇒ <code>string</code></dt>
-<dd></dd>
+<dd><p>Function to generate a random set of words</p>
+</dd>
 </dl>
 
 <a name="checkRover"></a>
 
 ## checkRover(id) ⇒ <code>Promise</code>
+
+Function to search for a Roblox account cia a Discord ID from Rover
 
 **Kind**: global function
 **Returns**: <code>Promise</code> - Promise that reflects an object with the user's data, or false if none is found.
@@ -34,16 +41,7 @@
 
 ## checkBloxlink(id) ⇒ <code>Promise</code>
 
-**Kind**: global function
-**Returns**: <code>Promise</code> - Promise that reflects an object with the user's data, or false if none is found.
-
-| Param | Type                                       | Description                |
-| ----- | ------------------------------------------ | -------------------------- |
-| id    | <code>number</code> \| <code>string</code> | Discord ID to search upon. |
-
-<a name="checkHyra"></a>
-
-## checkHyra(id) ⇒ <code>Promise</code>
+Function to search for a Roblox account cia a Discord ID from Bloxlink
 
 **Kind**: global function
 **Returns**: <code>Promise</code> - Promise that reflects an object with the user's data, or false if none is found.
@@ -56,6 +54,8 @@
 
 ## checkDiscordId(id) ⇒ <code>Promise</code>
 
+Function to check all services, and return a single point of truth Roblox ID
+
 **Kind**: global function
 **Returns**: <code>Promise</code> - Promise that reflects an object that contains the Roblox data, or false if nothing is found.
 
@@ -67,8 +67,10 @@
 
 ## checkAllServices(id) ⇒ <code>Promise</code>
 
+Function to check all services, and return the data fron all of them
+
 **Kind**: global function
-**Returns**: <code>Promise</code> - Promise that reflects an object that contains all the Roblox data, or false if nothing is found.
+**Returns**: <code>Promise</code> - Promise that reflects an object that contains all the services' data, or false if nothing is found.
 
 | Param | Type                                       | Description          |
 | ----- | ------------------------------------------ | -------------------- |
@@ -77,6 +79,8 @@
 <a name="checkForCode"></a>
 
 ## checkForCode(id, code, proxy) ⇒ <code>Promise</code>
+
+Function to check if a string is on a Roblox user's profile
 
 **Kind**: global function
 **Returns**: <code>Promise</code> - Promise that reflects true if code is found, false if not.
@@ -91,6 +95,8 @@
 
 ## generateRandomWords(num, seperator, words) ⇒ <code>string</code>
 
+Function to generate a random set of words
+
 **Kind**: global function
 **Returns**: <code>string</code> - Returns the generated words.
 
@@ -103,6 +109,8 @@
 <a name="generateRandomEmojis"></a>
 
 ## generateRandomEmojis(num, seperator, emojis) ⇒ <code>string</code>
+
+Function to generate a random set of words
 
 **Kind**: global function
 **Returns**: <code>string</code> - Returns the generated emojis.
