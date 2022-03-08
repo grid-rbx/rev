@@ -25,7 +25,7 @@ const config = {
           ],
           sidebarPath: require.resolve("./sidebars.js"),
           // Please change this to your repo.
-          editUrl: "https://github.com/grid-rbx/rev/edit/main/docs/",
+          editUrl: "https://github.com/grid-rbx/rev/edit/master/docs/",
         },
         pages: {
           remarkPlugins: [require("@docusaurus/remark-plugin-npm2yarn")],
@@ -38,6 +38,28 @@ const config = {
   ],
 
   themeConfig: {
+    algolia: {
+      // The application ID provided by Algolia
+      appId: "WI835PYVDV",
+
+      // Public API key: it is safe to commit it
+      apiKey: "bdae8fedc0cb38f47764e503a2b632be",
+
+      indexName: "rev-cursecode",
+
+      // Optional: see doc section below
+      contextualSearch: true,
+
+
+
+      // Optional: Algolia search parameters
+      searchParameters: {},
+
+      // Optional: path for search page that enabled by default (`false` to disable it)
+      searchPagePath: 'search',
+
+      //... other Algolia params
+    },
     gtag: {
       // You can also use your "G-" Measurement ID here.
       trackingID: "G-M7J72ZEVDG",
