@@ -7,6 +7,7 @@ function App() {
   return (
     <div className="App">
       <header className="App-header">
+        <h1 class="alert">DEPRECATED. MOST LIKELY DOES NOT WORK.</h1>
         <h1>Rev Demo</h1>
         <p>
           This is a demo for the Rev library. You can take the words <br />{" "}
