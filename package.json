@@ -3,6 +3,7 @@
   "version": "2.1.0",
   "description": "Roblox account linking, made easy.",
   "source": "src/index.js",
+  "type": "module",
   "main": "dist/index.js",
   "module": "dist/index.module.mjs",
   "files": [
