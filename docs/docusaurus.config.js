@@ -50,13 +50,11 @@ const config = {
       // Optional: see doc section below
       contextualSearch: true,
 
-
-
       // Optional: Algolia search parameters
       searchParameters: {},
 
       // Optional: path for search page that enabled by default (`false` to disable it)
-      searchPagePath: 'search',
+      searchPagePath: "search",
 
       //... other Algolia params
     },
@@ -66,14 +64,14 @@ const config = {
       // Optional fields.
       anonymizeIP: true, // Should IPs be anonymized?
     },
-    announcementBar: {
-      id: "in_dev",
-      content:
-        'We are still in development. Please read <a target="_blank" rel="noopener noreferrer" href="/docs/intro#disclaimer">the disclaimer</a> to learn more.',
-      backgroundColor: "#636363",
-      textColor: "#ebebeb",
-      isCloseable: true,
-    },
+    // announcementBar: {
+    //   id: "in_dev",
+    //   content:
+    //     'We are still in development. Please read <a target="_blank" rel="noopener noreferrer" href="/docs/intro#disclaimer">the disclaimer</a> to learn more.',
+    //   backgroundColor: "#636363",
+    //   textColor: "#ebebeb",
+    //   isCloseable: true,
+    // },
     navbar: {
       title: "Rev",
       logo: {
@@ -134,7 +132,7 @@ const config = {
           ],
         },
       ],
-      copyright: `Copyright © ${new Date().getFullYear()} Grid, Inc. Built with ❤️`,
+      copyright: `Copyright © ${new Date().getFullYear()} Grid, LLC`,
     },
     prism: {
       theme: lightCodeTheme,

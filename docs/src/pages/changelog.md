@@ -1,5 +1,35 @@
 # Changelog
 
+## 2.0.0: Stable! (07/03/2022)
+
+### We're stable!
+
+- (base) Update node_modules 7839403
+- (base) Merge branch &#39;master&#39; of https://github.com/grid-rbx/rev c70056e
+- (base) Delete node_modules/ files 314fcc3
+- (base) Optimize module 9ab2904
+- (docs) Update API Reference 567d801
+- (base) Package changes 523e114
+- (base) Update types aa8c7b4
+- (base) Remove typings on index b524d36
+- (base) Package changes 85f77b5
+- (base) Remove config types 6a17ad0
+- (docs) Update docusaurus.config.js a0d250c
+- (base) Update README.md 59b60fc
+- (docs) Update docusaurus.config.js e618b39
+- (base) Update custom.css f3c45c7
+- (docs) Change navbar aaeae8e
+- (docs) Fix broken links, add navbar item 4636d41
+- (docs) Guides... db497b5
+- (base) Merge branch &#39;master&#39; of https://github.com/grid-rbx/rev 43309b0
+- (docs) Yay! API Reference and Changelog! 7b9aaaf
+- (docs) Docs stuff, yknow? a9bdc66
+- (base) Fix Readme afee5bf
+- (base) Update JSDoc typings 42dbda1
+- (docs) Spelling and grammar in generating-phrases.md 96806b4
+
+https://github.com/grid-rbx/rev/compare/v0.11.3...v2.0.0
+
 ## 0.11.3 (29/11/2021)
 
 - (chore) .package-lock 3f2b5d1
