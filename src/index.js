@@ -140,7 +140,9 @@ async function checkForCode(id, code, proxy = config.usersEndpoint) {
   try {
     const { body } = await p(`${proxy}${id}`);
 
-    return body.description.includes(code) ? true : false;
+    return body.description.toLowerCase().includes(code.toLowerCase())
+      ? true
+      : false;
   } catch (error) {
     throw new Error(error);
   }
