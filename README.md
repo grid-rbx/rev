@@ -4,8 +4,6 @@
 
 Roblox account linking, made easy.
 
-[Demo](https://demo.rev.cursecode.me)
-
 ## Installation
 
 Install Rev with npm or Yarn
@@ -24,9 +22,6 @@ const rev = require("@grid-rbx/rev");
 
 // ES6
 import rev from "@grid-rbx/rev";
-
-// Browser
-import revBrowser from "https://cdn.skypack.dev/@grid-rbx/rev";
 ```
 
 ## Documentation
