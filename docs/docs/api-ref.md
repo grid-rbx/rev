@@ -2,16 +2,16 @@
 
 <dl>
 <dt><a href="#checkRover">checkRover(id)</a> ⇒ <code>Promise</code></dt>
-<dd><p>Function to search for a Roblox account cia a Discord ID from Rover</p>
+<dd><p>Function to search for a Roblox account via a Discord ID from Rover</p>
 </dd>
 <dt><a href="#checkBloxlink">checkBloxlink(id)</a> ⇒ <code>Promise</code></dt>
-<dd><p>Function to search for a Roblox account cia a Discord ID from Bloxlink</p>
+<dd><p>Function to search for a Roblox account via a Discord ID from Bloxlink</p>
 </dd>
 <dt><a href="#checkDiscordId">checkDiscordId(id)</a> ⇒ <code>Promise</code></dt>
 <dd><p>Function to check all services, and return a single point of truth Roblox ID</p>
 </dd>
 <dt><a href="#checkAllServices">checkAllServices(id)</a> ⇒ <code>Promise</code></dt>
-<dd><p>Function to check all services, and return the data fron all of them</p>
+<dd><p>Function to check all services, and return the data from all of them</p>
 </dd>
 <dt><a href="#checkForCode">checkForCode(id, code, proxy)</a> ⇒ <code>Promise</code></dt>
 <dd><p>Function to check if a string is on a Roblox user&#39;s profile</p>
@@ -20,7 +20,7 @@
 <dd><p>Function to generate a random set of words</p>
 </dd>
 <dt><a href="#generateRandomEmojis">generateRandomEmojis(num, seperator, emojis)</a> ⇒ <code>string</code></dt>
-<dd><p>Function to generate a random set of words</p>
+<dd><p>Function to generate a random set of emojis</p>
 </dd>
 </dl>
 
@@ -28,7 +28,7 @@
 
 ## checkRover(id) ⇒ <code>Promise</code>
 
-Function to search for a Roblox account cia a Discord ID from Rover
+Function to search for a Roblox account via a Discord ID from Rover
 
 **Kind**: global function
 **Returns**: <code>Promise</code> - Promise that reflects an object with the user's data, or false if none is found.
@@ -41,7 +41,7 @@ Function to search for a Roblox account cia a Discord ID from Rover
 
 ## checkBloxlink(id) ⇒ <code>Promise</code>
 
-Function to search for a Roblox account cia a Discord ID from Bloxlink
+Function to search for a Roblox account via a Discord ID from Bloxlink
 
 **Kind**: global function
 **Returns**: <code>Promise</code> - Promise that reflects an object with the user's data, or false if none is found.
@@ -67,7 +67,7 @@ Function to check all services, and return a single point of truth Roblox ID
 
 ## checkAllServices(id) ⇒ <code>Promise</code>
 
-Function to check all services, and return the data fron all of them
+Function to check all services, and return the data from all of them
 
 **Kind**: global function
 **Returns**: <code>Promise</code> - Promise that reflects an object that contains all the services' data, or false if nothing is found.
@@ -110,7 +110,7 @@ Function to generate a random set of words
 
 ## generateRandomEmojis(num, seperator, emojis) ⇒ <code>string</code>
 
-Function to generate a random set of words
+Function to generate a random set of emojis
 
 **Kind**: global function
 **Returns**: <code>string</code> - Returns the generated emojis.

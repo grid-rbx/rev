@@ -8,7 +8,7 @@ const p = phin.defaults({
 });
 
 /**
- * Function to search for a Roblox account cia a Discord ID from Rover
+ * Function to search for a Roblox account via a Discord ID from Rover
  * @param {number|string} id Discord ID to search upon.
  * @returns {Promise} Promise that reflects an object with the user's data, or false if none is found.
  */
@@ -38,7 +38,7 @@ async function checkRover(id) {
 }
 
 /**
- * Function to search for a Roblox account cia a Discord ID from Bloxlink
+ * Function to search for a Roblox account via a Discord ID from Bloxlink
  * @param {number|string} id Discord ID to search upon.
  * @returns {Promise} Promise that reflects an object with the user's data, or false if none is found.
  */
@@ -95,7 +95,7 @@ async function checkDiscordId(id) {
 }
 
 /**
- * Function to check all services, and return the data fron all of them
+ * Function to check all services, and return the data from all of them
  * @param {number|string} id Discord ID to check.
  * @returns {Promise} Promise that reflects an object that contains all the services' data, or false if nothing is found.
  */
@@ -171,7 +171,7 @@ function generateRandomWords(
 }
 
 /**
- * Function to generate a random set of words
+ * Function to generate a random set of emojis
  * @param {number} num Number of emojis. defaults to 10.
  * @param {Object} seperator Seperator, defaults to ""
  * @param {array} emojis Array of emojis, defaults to am array of all emojis.
